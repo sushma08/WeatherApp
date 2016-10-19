@@ -13,14 +13,16 @@ public class CitiesTable {
     static final String COUNTRY = "country";
     static final String TEMPERATURE = "temperature";
     static final String FAVORITE = "favorite";
+    static final String DATE = "date";
 
     static public void onCreate(SQLiteDatabase db){
         Log.d("Hey in Notes","I am here too");
         StringBuilder sb = new StringBuilder();
         sb.append("CREATE TABLE "+TABLENAME+" (");
-        sb.append(CITY + " text not null, ");
+        sb.append(CITY + " text primary key not null, ");
         sb.append(COUNTRY +" text not null, ");
         sb.append(TEMPERATURE +" text not null, ");
+        sb.append(DATE +" text not null, ");
         sb.append(FAVORITE +" text not null);");
         try{
             Log.d("table creation",sb.toString());
