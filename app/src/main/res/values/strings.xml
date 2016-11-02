@@ -9,7 +9,9 @@
     <string name="fav">Save City</string>
     <string name="settings">Settings</string>
     <string name="preference_name">Preferences</string>
-    <string name="title_activity_temperature_settings">Settings</string>
+    <string name="pref_title">Temperature Unit</string>
+    <string name="pref_title_key">Temperature Unit</string>
+    <string name="noCities">There are no cities to display. Search the city from the search box and save.</string>
 
     <string-array name="pref_sync_frequency_titles">
         <item>C</item>
@@ -20,6 +22,7 @@
         <item>C</item>
         <item>F</item>
     </string-array>
+<<<<<<< HEAD
 
     <string name="pref_title_vibrate">Vibrate</string>
     <string name="temperature">Temperature:</string>
@@ -30,4 +33,6 @@
     <string name="noCities">There are no cities to display. Search the city from the search box and save.</string>
     <string name="pref_title">Temperature Unit</string>
     <string name="pref_title_key">Temperature Unit</string>
+=======
+>>>>>>> 1002f1ea628e8d0a21c59bf27a8703c51a181c0a
 </resources>

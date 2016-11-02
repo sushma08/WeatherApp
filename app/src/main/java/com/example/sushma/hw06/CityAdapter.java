@@ -1,6 +1,7 @@
 package com.example.sushma.hw06;
 
 import android.content.Context;
+<<<<<<< HEAD
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.v7.widget.RecyclerView;
@@ -29,14 +30,31 @@ import android.preference.PreferenceManager;
 * Names: Vinayak Kolhapure and Sushma Reddy
 * */
 
+=======
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
+
+import java.util.List;
+
+/**
+ * Created by Sushma on 10/18/2016.
+ */
+>>>>>>> 1002f1ea628e8d0a21c59bf27a8703c51a181c0a
 public class CityAdapter extends RecyclerView.Adapter<CityAdapter.ViewHolder> {
 
     private List<City> mCities;
     private Context mContext;
+<<<<<<< HEAD
     ImageView image;
     /*Bitmap grayIcon;
     Bitmap goldIcon;*/
     City city;
+=======
+>>>>>>> 1002f1ea628e8d0a21c59bf27a8703c51a181c0a
 
     public CityAdapter(Context context, List<City> cities) {
         mCities = cities;
@@ -44,9 +62,16 @@ public class CityAdapter extends RecyclerView.Adapter<CityAdapter.ViewHolder> {
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
+<<<<<<< HEAD
         public TextView tvSaveCity,tvSaveTemp,tvSaveDate, tvSaveTest;
         public ImageView imageStar;
 
+=======
+        // Your holder should contain a member variable
+        // for any view that will be set as you render a row
+        public TextView nameTextView;
+        public TextView tempTextView, lastUpdated;
+>>>>>>> 1002f1ea628e8d0a21c59bf27a8703c51a181c0a
 
         // We also create a constructor that accepts the entire item row
         // and does the view lookups to find each subview
@@ -55,11 +80,17 @@ public class CityAdapter extends RecyclerView.Adapter<CityAdapter.ViewHolder> {
             // to access the context from any ViewHolder instance.
             super(itemView);
 
+<<<<<<< HEAD
             tvSaveCity = (TextView) itemView.findViewById(R.id.tvSavedCity);
             tvSaveTemp = (TextView) itemView.findViewById(R.id.tvSavedTemp);
             tvSaveDate = (TextView) itemView.findViewById(R.id.tvSavedDate);
             imageStar = (ImageView) itemView.findViewById(R.id.tvSavedStarImage);
             tvSaveTest = (TextView) itemView.findViewById(R.id.tvSavedTest);
+=======
+            nameTextView = (TextView) itemView.findViewById(R.id.textViewCityCountry);
+            tempTextView = (TextView) itemView.findViewById(R.id.textViewTemperature);
+            lastUpdated = (TextView) itemView.findViewById(R.id.textViewLastUpdated);
+>>>>>>> 1002f1ea628e8d0a21c59bf27a8703c51a181c0a
         }
     }
 
@@ -68,13 +99,18 @@ public class CityAdapter extends RecyclerView.Adapter<CityAdapter.ViewHolder> {
         Context context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
 
+<<<<<<< HEAD
         View contactView = inflater.inflate(R.layout.saved_city_list, parent, false);
+=======
+        View contactView = inflater.inflate(R.layout.item_contact, parent, false);
+>>>>>>> 1002f1ea628e8d0a21c59bf27a8703c51a181c0a
 
         ViewHolder viewHolder = new ViewHolder(contactView);
         return viewHolder;
     }
 
     @Override
+<<<<<<< HEAD
     public void onBindViewHolder(final CityAdapter.ViewHolder viewHolder, final int position) {
         city = mCities.get(position);
 
@@ -194,6 +230,17 @@ public class CityAdapter extends RecyclerView.Adapter<CityAdapter.ViewHolder> {
                 return false;
             }
         });
+=======
+    public void onBindViewHolder(CityAdapter.ViewHolder holder, int position) {
+        City city = mCities.get(position);
+
+        TextView textView = holder.nameTextView;
+        textView.setText(city.getCityName()+","+city.getCountry());
+        TextView textViewTemp = holder.tempTextView;
+        textViewTemp.setText(city.getTemperature());
+        TextView textViewLast = holder.lastUpdated;
+        textViewLast.setText(city.getDate());
+>>>>>>> 1002f1ea628e8d0a21c59bf27a8703c51a181c0a
     }
 
     @Override

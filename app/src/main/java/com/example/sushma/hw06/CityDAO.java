@@ -63,7 +63,11 @@ public class CityDAO {
     public List<City> getAll(){
         List<City> Citys = new ArrayList<City>();
         Cursor c = db.query(CitiesTable.TABLENAME, new String[]{CitiesTable.CITY, CitiesTable.COUNTRY, CitiesTable.TEMPERATURE,CitiesTable.DATE,CitiesTable.FAVORITE},
+<<<<<<< HEAD
                 null, null, null, null, null);
+=======
+                null, null, null,null,null);
+>>>>>>> 1002f1ea628e8d0a21c59bf27a8703c51a181c0a
         if(c!=null && c.moveToFirst()){
             do{
                 City City = buildCityFromCursor(c);

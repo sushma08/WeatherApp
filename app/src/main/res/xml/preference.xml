@@ -10,3 +10,11 @@
         android:summary="Choose between Celsius and Fahrenheit"/>
 
 </PreferenceScreen>
+<<<<<<< HEAD
+=======
+
+<!--<EditTextPreference-->
+<!--android:title="@string/pref_title"-->
+<!--android:key="@string/pref_title_key"-->
+<!--android:defaultValue=""></EditTextPreference>-->
+>>>>>>> 1002f1ea628e8d0a21c59bf27a8703c51a181c0a

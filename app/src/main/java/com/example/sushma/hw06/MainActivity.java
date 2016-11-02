@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+<<<<<<< HEAD
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,10 +26,18 @@ import java.util.List;
 * */
 
 public class MainActivity extends AppCompatActivity {
+=======
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class MainActivity extends AppCompatActivity{
+>>>>>>> 1002f1ea628e8d0a21c59bf27a8703c51a181c0a
 
     String cityNAme, countryName;
     public static DatabaseDataManager dm;
     TextView textView;
+<<<<<<< HEAD
     public static RecyclerView recyclerView;
     public static CityAdapter adapter;
     public static List<City> citiesSaved;
@@ -45,17 +54,26 @@ public class MainActivity extends AppCompatActivity {
         }
         display();
     }
+=======
+    RecyclerView recyclerView;
+    public static CityAdapter adapter;
+>>>>>>> 1002f1ea628e8d0a21c59bf27a8703c51a181c0a
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         textView = (TextView) findViewById(R.id.textView);
+<<<<<<< HEAD
         recyclerView = (RecyclerView) findViewById(R.id.rvSavedList);
+=======
+        recyclerView = (RecyclerView) findViewById(R.id.rvContacts);
+>>>>>>> 1002f1ea628e8d0a21c59bf27a8703c51a181c0a
 
         dm = new DatabaseDataManager(this);
         SharedPreferences getData = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
         String values = getData.getString("pref_title_key","C");
+<<<<<<< HEAD
         citiesSaved = new ArrayList<City>();
         citiesSaved = dm.getAllNotes();
         if(dm.getAllNotes().size()!=0) {
@@ -84,6 +102,17 @@ public class MainActivity extends AppCompatActivity {
                 }*//*
             }));*/
 
+=======
+
+        if(dm.getAllNotes().size()!=0) {
+            textView.setText("Saved Cities");
+            adapter = new CityAdapter(this, dm.getAllNotes());
+            adapter.notifyDataSetChanged();
+            recyclerView.setAdapter(adapter);
+            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+//            linearLayoutManager.setNotifyOnChange(true);
+            recyclerView.setLayoutManager(linearLayoutManager);
+>>>>>>> 1002f1ea628e8d0a21c59bf27a8703c51a181c0a
         }
     }
 
@@ -113,12 +142,16 @@ public class MainActivity extends AppCompatActivity {
             case R.id.action1:
                 Intent intent = new Intent();
                 intent.setClassName(this, "com.example.sushma.hw06.TemperaturePreference");
+<<<<<<< HEAD
                 intent.putExtra("class", "MAIN");
+=======
+>>>>>>> 1002f1ea628e8d0a21c59bf27a8703c51a181c0a
                 startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
     }
 
+<<<<<<< HEAD
 
     public static void updateFavorite(int position, String favorite) {
         City city = citiesSaved.get(position);
@@ -169,4 +202,14 @@ public class MainActivity extends AppCompatActivity {
             recyclerView.setLayoutManager(linearLayoutManager);
         }
     }
+=======
+/*    public void setupData(List<City> cities) {
+
+    }*/
+
+/*    @Override
+    public void recycleView(List<City> cityList) {
+            setupData(cityList);
+    }*/
+>>>>>>> 1002f1ea628e8d0a21c59bf27a8703c51a181c0a
 }

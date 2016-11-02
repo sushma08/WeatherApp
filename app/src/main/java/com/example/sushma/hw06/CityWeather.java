@@ -1,13 +1,17 @@
 package com.example.sushma.hw06;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+<<<<<<< HEAD
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+=======
+>>>>>>> 1002f1ea628e8d0a21c59bf27a8703c51a181c0a
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -17,6 +21,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+<<<<<<< HEAD
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -25,6 +30,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
+=======
+import java.util.List;
+
+public class CityWeather extends AppCompatActivity implements GetAsyncTemp.Temp{
+>>>>>>> 1002f1ea628e8d0a21c59bf27a8703c51a181c0a
 
 /*
 * Assignment #6
@@ -56,6 +66,16 @@ public class CityWeather extends AppCompatActivity implements GetAsyncTemp.ISetu
         }
     }
 
+//    DisplayRecycle activity;
+//    Context mContext;
+//    CityWeather(DisplayRecycle activity, Context context){
+//        this.activity = activity;
+//        mContext = context;
+//    }
+
+    DisplayRecycle mListener;
+    Context context;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,6 +84,10 @@ public class CityWeather extends AppCompatActivity implements GetAsyncTemp.ISetu
         localWeathersList = new ArrayList<Weather>();
         weatherDayMap = new HashMap<Date,ArrayList<Weather>>();
         TextView tvLoc;
+        SharedPreferences getData = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
+        String values = getData.getString("pref_title_key","C");
+        Log.d("List value",values);
+        mListener = (DisplayRecycle)context;
         //tvLoc = (TextView) findViewById(R.id.textViewLocation);
         header = (TextView) findViewById(R.id.tvCityHeader);
         tvCityDetailheader = (TextView) findViewById(R.id.tvCityDetailHeader);
@@ -142,6 +166,7 @@ public class CityWeather extends AppCompatActivity implements GetAsyncTemp.ISetu
         switch (item.getItemId()) {
             case R.id.action:
                 City city = new City();
+<<<<<<< HEAD
                 city.setCountry(intentCountryNam.toUpperCase());
                 staticCityName = staticCityName.substring(0,1).toUpperCase()+staticCityName.substring(1).toLowerCase();
                 city.setCityName(staticCityName);
@@ -159,10 +184,21 @@ public class CityWeather extends AppCompatActivity implements GetAsyncTemp.ISetu
                 MainActivity.recyclerView.setAdapter(adapter);
                 LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
                 MainActivity.recyclerView.setLayoutManager(linearLayoutManager);
+=======
+                city.setCountry(intentCountryNam);
+                city.setCityName(intentCityNam);
+                city.setFavorite("true");
+                city.setTemperature("50");
+                city.setDate("10/20/2016");
+                List<City> notes = MainActivity.dm.getAllNotes();
+                MainActivity.dm.saveNote(city);
+                List<City> clist = MainActivity.dm.getAllNotes();
+>>>>>>> 1002f1ea628e8d0a21c59bf27a8703c51a181c0a
 //                MainActivity.adapter.notifyDataSetChanged();
 //                mListener.recycleView(clist);
                 Log.d("City in database",notes.toString());
                 Toast.makeText(getApplicationContext(), "Saved City", Toast.LENGTH_SHORT).show();
+<<<<<<< HEAD
                 return true;
             case R.id.action1:
                 //Toast.makeText(getApplicationContext(), "Settings", Toast.LENGTH_SHORT).show();
@@ -171,9 +207,19 @@ public class CityWeather extends AppCompatActivity implements GetAsyncTemp.ISetu
                 intent.putExtra("class", "CITY");
                 intent.putExtra("city", intentCityNam);
                 intent.putExtra("state", intentCountryNam);
+=======
+
+            case R.id.action1:
+                Intent intent = new Intent();
+                intent.setClassName(this, "com.example.sushma.hw06.TemperaturePreference");
+>>>>>>> 1002f1ea628e8d0a21c59bf27a8703c51a181c0a
                 startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    static public interface DisplayRecycle{
+        public void recycleView(List<City> cityList);
     }
 
     @Override

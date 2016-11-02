@@ -8,6 +8,7 @@ import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+<<<<<<< HEAD
 /*
 * Assignment #6
 * Names: Vinayak Kolhapure and Sushma Reddy
@@ -17,6 +18,9 @@ import android.os.Bundle;
 public class TemperaturePreference extends PreferenceActivity implements SharedPreferences.OnSharedPreferenceChangeListener{
 
     private static final String KEY_LIST_VIEW_PREFERENCE = "key";
+=======
+public class TemperaturePreference extends PreferenceActivity implements SharedPreferences.OnSharedPreferenceChangeListener{
+>>>>>>> 1002f1ea628e8d0a21c59bf27a8703c51a181c0a
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +44,7 @@ public class TemperaturePreference extends PreferenceActivity implements SharedP
             }else{
                 listPreference.setSummary("C");
             }
+<<<<<<< HEAD
             SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
             SharedPreferences.Editor editor = sharedPrefs.edit();
             editor.putString("KEY", listPreference.getEntry()+"");
@@ -56,6 +61,8 @@ public class TemperaturePreference extends PreferenceActivity implements SharedP
                     startActivity(intent1);
                 }
             }*/
+=======
+>>>>>>> 1002f1ea628e8d0a21c59bf27a8703c51a181c0a
         }
     }
 }

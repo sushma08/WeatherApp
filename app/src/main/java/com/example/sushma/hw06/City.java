@@ -3,6 +3,8 @@ package com.example.sushma.hw06;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 /**
  * Created by Sushma on 10/16/2016.
  */
@@ -79,4 +81,8 @@ public class City {
         this.favorite = favorite;
     }
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1002f1ea628e8d0a21c59bf27a8703c51a181c0a

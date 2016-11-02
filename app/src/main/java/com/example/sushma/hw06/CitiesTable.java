@@ -24,6 +24,7 @@ public class CitiesTable {
     static public void onCreate(SQLiteDatabase db) {
         Log.d("Hey in Notes", "I am here too");
         StringBuilder sb = new StringBuilder();
+<<<<<<< HEAD
         sb.append("CREATE TABLE " + TABLENAME + " (");
         sb.append(CITY + " text primary key not null, ");
         sb.append(COUNTRY + " text not null, ");
@@ -32,6 +33,16 @@ public class CitiesTable {
         sb.append(FAVORITE + " text not null);");
         try {
             Log.d("table creation", sb.toString());
+=======
+        sb.append("CREATE TABLE "+TABLENAME+" (");
+        sb.append(CITY + " text primary key not null, ");
+        sb.append(COUNTRY +" text not null, ");
+        sb.append(TEMPERATURE +" text not null, ");
+        sb.append(DATE +" text not null, ");
+        sb.append(FAVORITE +" text not null);");
+        try{
+            Log.d("table creation",sb.toString());
+>>>>>>> 1002f1ea628e8d0a21c59bf27a8703c51a181c0a
             db.execSQL(sb.toString());
         } catch (SQLException ex) {
             ex.printStackTrace();
