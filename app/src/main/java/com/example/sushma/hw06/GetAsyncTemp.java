@@ -8,19 +8,30 @@ import org.json.JSONException;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.lang.reflect.Array;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
+import java.text.ParseException;
 import java.util.ArrayList;
 
 /**
  * Created by Sushma on 10/16/2016.
  */
+
+/*
+* Assignment #6
+* Names: Vinayak Kolhapure and Sushma Reddy
+* */
+
 public class GetAsyncTemp extends AsyncTask<String, Void, ArrayList<Weather>> {
-    Temp activity;
+    ISetupData activity;
     Context mContext;
-    GetAsyncTemp(Temp activity, Context context){
+
+
+
+    GetAsyncTemp(ISetupData activity, Context context){
         this.activity = activity;
         mContext = context;
     }
@@ -57,6 +68,8 @@ public class GetAsyncTemp extends AsyncTask<String, Void, ArrayList<Weather>> {
             e.printStackTrace();
         } catch (JSONException e) {
             e.printStackTrace();
+        } catch (ParseException e) {
+            e.printStackTrace();
         }
         return null;
     }
@@ -72,10 +85,11 @@ public class GetAsyncTemp extends AsyncTask<String, Void, ArrayList<Weather>> {
     protected void onPostExecute(ArrayList<Weather> weathers) {
         super.onPostExecute(weathers);
         CityWeather.pd.dismiss();
+        activity.setupWeathers(weathers);
     }
 
-    static public interface Temp
+    public interface ISetupData
     {
-        public void getTemp();
+        void setupWeathers(ArrayList<Weather> weathers);
     }
 }

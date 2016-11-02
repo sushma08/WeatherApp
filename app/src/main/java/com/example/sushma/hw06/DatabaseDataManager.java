@@ -8,6 +8,12 @@ import java.util.List;
 /**
  * Created by Sushma on 10/15/2016.
  */
+
+/*
+* Assignment #6
+* Names: Vinayak Kolhapure and Sushma Reddy
+* */
+
 public class DatabaseDataManager {
     private Context mContext;
     private DatabaseOpenHelper dbOpenHelper;

@@ -11,14 +11,24 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.lang.reflect.Type;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
  * Created by Sushma on 10/5/2016.
  */
+
+/*
+* Assignment #6
+* Names: Vinayak Kolhapure and Sushma Reddy
+* */
+
 public class WeatherUtil {
-        public static ArrayList<Weather> parseweather(String result) throws JSONException {
+        public static ArrayList<Weather> parseweather(String result) throws JSONException, ParseException {
             ArrayList<Weather> weatherList = new ArrayList<Weather>();
             JSONObject root = new JSONObject(result);
             JSONArray weatherJSONArray = root.getJSONArray("list");
@@ -29,6 +39,32 @@ public class WeatherUtil {
             }
             Log.d("Size of list is "," "+weatherList.size());
             return weatherList;
+    }
+
+    public static String convertDateToMMMddyyyy(String date, int format) {
+        String convertedDate = null;
+
+        DateFormat fromFormat = null;
+        String stringForm = null;
+        Date dateFinal = null;
+
+        if(format == 0)
+            fromFormat = new SimpleDateFormat("yyyy-MM-dd");
+        else if(format == 1)
+            fromFormat = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss zzz");
+
+        fromFormat.setLenient(false);
+        DateFormat toFormat = new SimpleDateFormat("MMM dd, yyyy");
+        toFormat.setLenient(false);
+        try {
+            dateFinal = fromFormat.parse(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        convertedDate = toFormat.format(dateFinal);
+
+        return convertedDate;
     }
 
 /*    public static void fromJSON(SharedPreferences prefs) {

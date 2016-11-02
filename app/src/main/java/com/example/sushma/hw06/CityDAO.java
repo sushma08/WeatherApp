@@ -10,6 +10,12 @@ import java.util.List;
 /**
  * Created by Sushma on 10/16/2016.
  */
+
+/*
+* Assignment #6
+* Names: Vinayak Kolhapure and Sushma Reddy
+* */
+
 public class CityDAO {
     private SQLiteDatabase db;
 
@@ -19,16 +25,20 @@ public class CityDAO {
 
     public long save(City City){
         ContentValues values = new ContentValues();
+        values.put(CitiesTable.CITY, City.getCityName());
         values.put(CitiesTable.COUNTRY, City.getCountry());
         values.put(CitiesTable.TEMPERATURE, City.getTemperature());
+        values.put(CitiesTable.DATE, City.getDate());
         values.put(CitiesTable.FAVORITE, City.getFavorite());
         return db.insert(CitiesTable.TABLENAME, null, values);
     }
 
     public boolean update(City City){
         ContentValues values = new ContentValues();
+        values.put(CitiesTable.CITY, City.getCityName());
         values.put(CitiesTable.COUNTRY, City.getCountry());
         values.put(CitiesTable.TEMPERATURE, City.getTemperature());
+        values.put(CitiesTable.DATE, City.getDate());
         values.put(CitiesTable.FAVORITE, City.getFavorite());
         return db.update(CitiesTable.TABLENAME, values, CitiesTable.CITY+"=?", new String[]{City.getCityName()+""})>0;
     }
@@ -39,7 +49,7 @@ public class CityDAO {
 
     public City get(long id){
         City City = null;
-        Cursor c = db.query(true, CitiesTable.TABLENAME, new String[]{CitiesTable.CITY, CitiesTable.COUNTRY, CitiesTable.TEMPERATURE,CitiesTable.FAVORITE},
+        Cursor c = db.query(true, CitiesTable.TABLENAME, new String[]{CitiesTable.CITY, CitiesTable.COUNTRY, CitiesTable.TEMPERATURE,CitiesTable.DATE,CitiesTable.FAVORITE},
                 CitiesTable.CITY+"=?", new String[]{id+""}, null, null, null,null,null);
         if(c!=null && c.moveToFirst()){
             City = buildCityFromCursor(c);
@@ -52,8 +62,8 @@ public class CityDAO {
 
     public List<City> getAll(){
         List<City> Citys = new ArrayList<City>();
-        Cursor c = db.query(CitiesTable.TABLENAME, new String[]{CitiesTable.CITY, CitiesTable.COUNTRY, CitiesTable.TEMPERATURE,CitiesTable.FAVORITE},
-                null, null, null,null,null);
+        Cursor c = db.query(CitiesTable.TABLENAME, new String[]{CitiesTable.CITY, CitiesTable.COUNTRY, CitiesTable.TEMPERATURE,CitiesTable.DATE,CitiesTable.FAVORITE},
+                null, null, null, null, null);
         if(c!=null && c.moveToFirst()){
             do{
                 City City = buildCityFromCursor(c);
@@ -76,7 +86,8 @@ public class CityDAO {
             City.setCityName(c.getString(0));
             City.setCountry(c.getString(1));
             City.setTemperature(c.getString(2));
-            City.setFavorite(c.getString(3));
+            City.setDate(c.getString(3));
+            City.setFavorite(c.getString(4));
         }
         return City;
     }

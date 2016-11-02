@@ -7,23 +7,43 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.Serializable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Comparator;
+import java.util.Date;
 
 /**
  * Created by Sushma on 10/5/2016.
  */
+
+/*
+* Assignment #6
+* Names: Vinayak Kolhapure and Sushma Reddy
+* */
+
 public class Weather implements Serializable{
 
+    public static Comparator<Weather> LatestOrder =
+            new Comparator<Weather>() {
+                @Override
+                public int compare(Weather e1, Weather e2) {
+                    return e1.getDate().compareTo(e2.getDate());
+                }
+            };
+
     private static Weather userInstance = null;
-    String time, temperature, iconUrl, windSpeed, windDirection, climateType,
-            humidity,pressure,date;
+    private String time, temperature, iconUrl, windSpeed, windDirection, climateType,
+            humidity,pressure;
+
+    Date date;
 
     public Weather(){}
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
@@ -106,7 +126,7 @@ public class Weather implements Serializable{
                 '}';
     }
 
-    public static Weather createWeather(JSONObject weatherJSON) throws JSONException {
+    public static Weather createWeather(JSONObject weatherJSON) throws JSONException, ParseException {
 
         Weather weather =new Weather();
         JSONObject main = weatherJSON.getJSONObject("main");
@@ -140,7 +160,10 @@ public class Weather implements Serializable{
             timeinAmPm = timeAmPm+":00 am";
         }
         weather.setTime(timeinAmPm);
-        weather.setDate(date);
+
+        Date newDate = new SimpleDateFormat("yyyy-MM-dd").parse(date);
+
+        weather.setDate(newDate);
 
         Log.d("Weather Obj",weather.toString());
 

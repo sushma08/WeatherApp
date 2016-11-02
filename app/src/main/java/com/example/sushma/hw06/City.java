@@ -6,18 +6,45 @@ import org.json.JSONObject;
 /**
  * Created by Sushma on 10/16/2016.
  */
+
+/*
+* Assignment #6
+* Names: Vinayak Kolhapure and Sushma Reddy
+* */
+
 public class City {
-    String cityName, country, temperature, favorite;
+    String cityName, country, temperature, favorite, date;
 
     public City(){
 
     }
 
-    public City(String cityName, String country, String temperature, String favorite) {
+    @Override
+    public String toString() {
+        return "City{" +
+                "cityName='" + cityName + '\'' +
+                ", country='" + country + '\'' +
+                ", temperature='" + temperature + '\'' +
+                ", favorite='" + favorite + '\'' +
+                ", date='" + date + '\'' +
+                '}';
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public City(String cityName, String country, String temperature, String favorite, String date) {
         this.cityName = cityName;
         this.country = country;
         this.temperature = temperature;
         this.favorite = favorite;
+        this.date = date;
+
     }
 
     public String getCityName() {
@@ -52,13 +79,4 @@ public class City {
         this.favorite = favorite;
     }
 
-    @Override
-    public String toString() {
-        return "City{" +
-                "cityName='" + cityName + '\'' +
-                ", country='" + country + '\'' +
-                ", temperature='" + temperature + '\'' +
-                ", favorite='" + favorite + '\'' +
-                '}';
-    }
 }

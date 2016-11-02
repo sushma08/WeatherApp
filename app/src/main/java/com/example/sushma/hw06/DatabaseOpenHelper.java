@@ -8,9 +8,15 @@ import android.util.Log;
 /**
  * Created by Sushma on 10/15/2016.
  */
+
+/*
+* Assignment #6
+* Names: Vinayak Kolhapure and Sushma Reddy
+* */
+
 public class DatabaseOpenHelper extends SQLiteOpenHelper {
     static final String DB_NAME = "weather.db";
-    static final int DB_VERSION = 2;
+    static final int DB_VERSION = 3;
 
     public DatabaseOpenHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
